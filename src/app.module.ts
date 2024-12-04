@@ -18,8 +18,8 @@ import { UserModule } from './user/user.module';
     }),
 
     // Feature modules
-    DinnerModule,
     UserModule,
+    DinnerModule,
   ],
   // controllers: [AppController],
   // providers: [AppService],

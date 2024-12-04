@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, ManyToOne, JoinTable } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
 
 @Entity()
@@ -27,4 +27,7 @@ export class Dinner {
   @ManyToMany(() => User, { eager: true })
   @JoinTable()
   guests: User[];
+
+  @ManyToOne(() => User, { eager: true })
+  createdBy: User;
 }

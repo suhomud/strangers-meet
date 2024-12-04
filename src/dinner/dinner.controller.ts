@@ -17,11 +17,21 @@ export class DinnerController {
   }
 
   @Post()
-  create(@Body() dinner: Partial<Dinner>) {
-    return this.dinnerService.create(dinner);
+  create(@Body('userId') userId: number, @Body() dinnerData: Partial<Dinner>) {
+    return this.dinnerService.create(userId, dinnerData);
   }
 
-  @Put(':id')
+  @Post(':id/join')
+  join(@Param('id') dinnerId: number, @Body('userId') userId: number) {
+    return this.dinnerService.joinDinner(dinnerId, userId);
+  }
+
+  @Put(':id/leave')
+  leave(@Param('id') dinnerId: number, @Body('userId') userId: number) {
+    return this.dinnerService.leave(dinnerId, userId);
+  }
+
+  @Put(':id') 
   update(@Param('id') id: number, @Body() dinner: Partial<Dinner>) {
     return this.dinnerService.update(id, dinner);
   }
