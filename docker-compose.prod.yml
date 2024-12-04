@@ -1,0 +1,7 @@
+version: "3.9"
+
+services:
+  app:
+    command: npm run start:prod
+    environment:
+      NODE_ENV: prod

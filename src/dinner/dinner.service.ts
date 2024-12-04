@@ -45,10 +45,10 @@ export class DinnerService {
       relations: ['guests'],
     });
     if (!dinner) {
-      throw new BadRequestException('Dinner not found');
+      throw new NotFoundException('Dinner not found');
     }
     if (dinner.currentGuests >= dinner.maxGuests) {
-      throw new NotFoundException('Dinner is full');
+      throw new BadRequestException('Dinner is full');
     }
 
     const user = await this.userRepository.findOne({ where: { id: userId } });
@@ -90,7 +90,7 @@ export class DinnerService {
 
     dinner.guests.splice(userIndex, 1); 
     dinner.currentGuests -= 1;
-    
+
     return this.dinnerRepository.save(dinner);
   }
 

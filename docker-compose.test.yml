@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  postgres:
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_test_data:
